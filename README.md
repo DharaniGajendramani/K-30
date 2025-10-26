@@ -1,5 +1,5 @@
 =========================================
-#CROP YIELD PREDICTION (INTERACTIVE MODEL)
+CROP YIELD PREDICTION (INTERACTIVE MODEL)
 =========================================
 
 PROJECT TITLE:
