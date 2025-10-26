@@ -1,0 +1,31 @@
+import pandas as pd
+import joblib
+import os
+
+# -------------------------
+# Load trained model
+# -------------------------
+model_path = "/content/crop_yield_stacking_model.pkl"  # path to your saved model
+model = joblib.load(model_path)
+print("✅ Model loaded successfully!")
+
+# -------------------------
+# Load test dataset
+# -------------------------
+test_file = "/content/crop_yield_dataset.csv"  # Your new dataset
+test_data = pd.read_csv(test_file)
+print(f"✅ Test dataset loaded with {len(test_data)} rows.")
+
+# -------------------------
+# Make predictions
+# -------------------------
+predictions = model.predict(test_data)
+
+# Add predicted yield to DataFrame
+test_data["predicted_yield"] = predictions
+print("\nPredictions:")
+print(test_data.head())
+
+# Save predictions
+test_data.to_csv("/content/crop_yield.csv", index=False)
+print("\n✅ Predictions saved to 'yield_predictions.csv'")
